@@ -9,26 +9,28 @@ const { project, compact = false } = Astro.props;
 ---
 
 <article
-  class={`flex flex-col rounded-xl border border-line bg-panel p-6 transition duration-200 ease-out hover:-translate-y-1 hover:scale-[1.02] hover:border-accent/40 hover:shadow-lg hover:shadow-accent/5 ${compact ? 'gap-2' : 'gap-3'}`}
+  class={compact
+    ? 'grid gap-2 py-4 sm:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] sm:gap-x-6'
+    : 'flex flex-col gap-3 rounded-xl border border-line bg-panel p-5 sm:p-6'}
 >
-  <div class="flex flex-wrap items-center justify-between gap-2">
-    <h3 class={`font-semibold text-white ${compact ? 'text-base' : 'text-lg'}`}>{project.title}</h3>
-    <span class="rounded-full bg-accent-dim px-3 py-1 text-xs font-medium text-accent">{project.metric}</span>
+  <div>
+    <h3 class:list={['font-semibold text-forest', !compact && 'text-lg']}>{project.title}</h3>
+    <p class:list={['mt-1 text-sm font-medium text-accent', !compact && 'w-fit rounded-md bg-accent-dim px-2 py-1']}>{project.metric}</p>
   </div>
-  <p class={`text-zinc-400 ${compact ? 'text-sm' : 'text-[0.95rem] leading-relaxed'}`}>{project.description}</p>
-  <div class="mt-auto flex flex-wrap items-center gap-x-4 gap-y-2 pt-2">
-    <div class="flex flex-wrap gap-1.5">
-      {project.tech.map((t) => (
-        <span class="rounded bg-ink px-2 py-0.5 text-xs text-zinc-500">{t}</span>
-      ))}
-    </div>
-    <div class="ml-auto flex gap-4 text-sm">
+  <div>
+    <p class="text-sm leading-relaxed text-muted">{project.description}</p>
+    {(project.links.length > 0 || project.note) && <div class="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-sm">
       {project.links.map((l) => (
         <a href={l.url} target="_blank" rel="noopener" class="font-medium text-accent hover:underline">
           {l.label} ↗
         </a>
       ))}
-      {project.note && <span class="text-xs italic text-zinc-500">{project.note}</span>}
-    </div>
+      {project.note && <span class="text-xs italic text-muted">{project.note}</span>}
+    </div>}
   </div>
+  {!compact && <ul class="mt-auto flex flex-wrap gap-1.5 pt-2">
+    {project.tech.map((t) => (
+      <li class="rounded border border-line px-2 py-0.5 text-xs text-muted">{t}</li>
+    ))}
+  </ul>}
 </article>

@@ -1,7 +1,7 @@
 export const profile = {
   name: 'Saumya Rishikesh',
   tagline: 'AI engineer building GPU-backed services, voice agents, and retrieval systems.',
-  sub: 'Associate Software Engineer (AIML) at Cyfuture India · B.Tech CS, Manipal University Jaipur (2026)',
+  role: 'AI engineer at Cyfuture India',
   email: 'saumya1404@gmail.com',
   github: 'https://github.com/Saumya1404',
   linkedin: 'https://linkedin.com/in/saumya-rishikesh-286aa1178',
@@ -28,7 +28,7 @@ export interface Project {
 export const featured: Project[] = [
   {
     title: 'SHL Assessment Recommender',
-    metric: 'Mean Recall@10 improved from 0.24 to 0.37',
+    metric: 'Mean Recall@10: 0.24 → 0.37',
     description:
       'Hybrid retrieval engine for hiring assessments: dense (MiniLM) and sparse BM25 vectors fused with server-side reciprocal-rank fusion in Qdrant, LLM intent parsing with duration/role/seniority filters, and two-stage reranking (Cohere, ZeRank). Measured on a labeled query set.',
     tech: ['Python', 'Qdrant', 'FastAPI', 'Streamlit', 'Reranking'],
@@ -39,20 +39,20 @@ export const featured: Project[] = [
     ],
   },
   {
+    title: 'Jev Codebase Explorer (CodeScout)',
+    metric: 'Token-budgeted context packs for coding agents',
+    description:
+      'Local CLI that indexes Python, JavaScript, and TypeScript repositories with Tree-sitter and SQLite FTS5. It traces callers and callees and packages source spans, related tests, and Git history for coding agents. An offline ranker and optional Jev reranking can be compared by latency and token usage.',
+    tech: ['Python', 'Tree-sitter', 'SQLite FTS5', 'Git', 'Vercel AI Gateway'],
+    links: [{ label: 'Code', url: 'https://github.com/Saumya1404/Codescout' }],
+  },
+  {
     title: 'Math Routing Agent',
     metric: '4-agent pipeline · async human-in-the-loop',
     description:
       'Agentic math tutor: a LangGraph-orchestrated pipeline of Professor, Critic, Guardrail, and human-in-the-loop agents over RAG (GSM8K + Orca-200k in Qdrant). The graph suspends on critic rejection and resumes when human feedback arrives via the API; corrections are compiled into the refiner with DSPy BootstrapFewShot. Includes a custom MCP web-search tool server.',
     tech: ['Python', 'LangGraph', 'DSPy', 'Qdrant', 'MCP', 'FastAPI', 'React'],
     links: [{ label: 'Code', url: 'https://github.com/Saumya1404/Agentic-Math-Prof' }],
-  },
-  {
-    title: 'Jev Codebase Explorer (CodeScout)',
-    metric: 'Token-budgeted context packs',
-    description:
-      'Local CLI that indexes Python, JavaScript, and TypeScript repositories with Tree-sitter and SQLite FTS5. It traces callers and callees and packages source spans, related tests, and Git history for coding agents. An offline ranker and optional Jev reranking can be compared by latency and token usage.',
-    tech: ['Python', 'Tree-sitter', 'SQLite FTS5', 'Git', 'Vercel AI Gateway'],
-    links: [{ label: 'Code', url: 'https://github.com/Saumya1404/Codescout' }],
   },
   {
     title: 'LLM Gateway and Traffic Router',
@@ -169,6 +169,7 @@ export const publication = {
   citation:
     'S. Rishikesh et al., "Leveraging CNN Architectures for Alzheimer’s Disease Classification Using Neuroimaging Data," in Proc. 2nd Int. Conf. on Artificial Intelligence for Innovations in Healthcare Industries (ICAIIHI), IEEE, 2025.',
   url: 'https://ieeexplore.ieee.org/abstract/document/11403729',
+  scholarUrl: 'https://scholar.google.com/citations?hl=en&user=ft65hrUAAAAJ',
   note: 'Follow-up research in progress — code will be released after publication. Related public work: clinical-data models on OASIS.',
   relatedUrl: 'https://github.com/Saumya1404/Alzheimer-Detection-Clinical',
 };

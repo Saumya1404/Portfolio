@@ -6,40 +6,38 @@ import { profile, about, featured, more, experience, publication, skills } from 
 
 <Base>
   <!-- Hero -->
-  <section class="pt-24 pb-10 sm:pt-32 sm:pb-12">
-    <p class="mb-3 text-sm font-medium tracking-widest text-accent uppercase">Portfolio</p>
-    <h1 class="text-4xl font-bold tracking-tight text-white sm:text-5xl">{profile.name}</h1>
-    <p class="mt-4 max-w-2xl text-xl text-zinc-300">{profile.tagline}</p>
-    <p class="mt-2 max-w-2xl text-sm text-zinc-500">{profile.sub}</p>
-    <div class="mt-8 flex flex-wrap gap-3 text-sm font-medium">
-      <a href="#projects" class="rounded-lg bg-accent px-4 py-2 text-ink transition duration-150 hover:scale-105 hover:opacity-90">View projects</a>
-      <a href={profile.resume} class="rounded-lg border border-line px-4 py-2 text-zinc-200 transition duration-150 hover:scale-105 hover:border-accent/50">Resume (PDF)</a>
-      <a href={profile.github} target="_blank" rel="noopener" class="rounded-lg border border-line px-4 py-2 text-zinc-200 transition duration-150 hover:scale-105 hover:border-accent/50">GitHub</a>
-      <a href={profile.linkedin} target="_blank" rel="noopener" class="rounded-lg border border-line px-4 py-2 text-zinc-200 transition duration-150 hover:scale-105 hover:border-accent/50">LinkedIn</a>
-      <a href={`mailto:${profile.email}`} class="rounded-lg border border-line px-4 py-2 text-zinc-200 transition duration-150 hover:scale-105 hover:border-accent/50">Email</a>
+  <section class="border-b border-line pt-12 pb-9 sm:pt-16 sm:pb-11">
+    <p class="mb-3 text-xs font-semibold tracking-[0.18em] text-accent uppercase">{profile.role}</p>
+    <h1 class="text-5xl leading-none font-medium tracking-tight sm:text-7xl">{profile.name}</h1>
+    <p class="mt-4 max-w-2xl text-lg leading-relaxed text-muted">I build GPU-backed video generation services, multilingual voice agents, and retrieval systems.</p>
+    <div class="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm font-medium">
+      <a href="#projects" class="rounded-lg bg-forest px-4 py-2 text-panel transition-colors hover:bg-accent">View projects</a>
+      <a href={profile.resume} class="py-2 text-accent hover:underline">Résumé</a>
+      <a href={profile.github} target="_blank" rel="noopener" class="py-2 text-accent hover:underline">GitHub ↗</a>
+      <a href={publication.scholarUrl} target="_blank" rel="noopener" class="py-2 text-accent hover:underline">Scholar ↗</a>
+      <a href={profile.linkedin} target="_blank" rel="noopener" class="py-2 text-accent hover:underline">LinkedIn ↗</a>
     </div>
   </section>
 
   <!-- Featured projects -->
-  <section id="projects" class="scroll-mt-20 py-12">
-    <h2 class="mb-2 text-2xl font-semibold text-white">Featured work</h2>
-    <p class="mb-8 text-sm text-zinc-500">Selected projects in retrieval, agent tooling, and model infrastructure.</p>
-    <div class="flex flex-col gap-5">
+  <section id="projects" class="scroll-mt-20 border-b border-line py-9 sm:py-11">
+    <h2 class="mb-5 text-3xl font-medium">Featured work</h2>
+    <div class="grid gap-4 md:grid-cols-2">
       {featured.map((p) => <ProjectCard project={p} />)}
     </div>
 
-    <h2 class="mt-16 mb-8 text-xl font-semibold text-white">More projects</h2>
-    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    <h2 class="mt-11 mb-4 text-2xl font-medium">More projects</h2>
+    <div class="divide-y divide-line border-y border-line">
       {more.map((p) => <ProjectCard project={p} compact />)}
     </div>
   </section>
 
   <!-- About -->
-  <section id="about" class="scroll-mt-20 py-12">
-    <h2 class="mb-6 text-2xl font-semibold text-white">About</h2>
-    <div class="max-w-3xl space-y-4 leading-relaxed text-zinc-400">
+  <section id="about" class="scroll-mt-20 border-b border-line py-10">
+    <h2 class="mb-6 text-2xl font-semibold text-forest">About</h2>
+    <div class="max-w-3xl space-y-4 leading-relaxed text-muted">
       {about.paragraphs.map((p) => <p>{p}</p>)}
-      <p class="text-sm text-zinc-500">
+      <p class="text-sm text-muted">
         Dean’s List certificates:
         <a href={about.certificate} target="_blank" rel="noopener" class="text-accent hover:underline">view ↗</a>
       </p>
@@ -47,17 +45,17 @@ import { profile, about, featured, more, experience, publication, skills } from 
   </section>
 
   <!-- Experience -->
-  <section id="experience" class="scroll-mt-20 py-12">
-    <h2 class="mb-8 text-2xl font-semibold text-white">Experience</h2>
+  <section id="experience" class="scroll-mt-20 border-b border-line py-10">
+    <h2 class="mb-8 text-2xl font-semibold text-forest">Experience</h2>
     <ol class="relative space-y-10 border-l border-line pl-6">
       {experience.map((e) => (
         <li class="relative">
-          <span class="absolute -left-[1.85rem] top-1.5 h-3 w-3 rounded-full border-2 border-accent bg-ink"></span>
+          <span class="absolute -left-[1.85rem] top-1.5 h-3 w-3 rounded-full border-2 border-accent bg-paper"></span>
           <div class="flex flex-wrap items-baseline justify-between gap-2">
-            <h3 class="font-semibold text-white">{e.role} · <span class="text-zinc-300">{e.org}</span></h3>
-            <span class="text-sm text-zinc-500">{e.period}</span>
+            <h3 class="font-semibold text-forest">{e.role} · <span class="text-muted">{e.org}</span></h3>
+            <span class="text-sm text-muted">{e.period}</span>
           </div>
-          <ul class="mt-2 list-disc space-y-1 pl-4 text-sm leading-relaxed text-zinc-400">
+          <ul class="mt-2 list-disc space-y-1 pl-4 text-sm leading-relaxed text-muted">
             {e.points.map((pt) => <li>{pt}</li>)}
           </ul>
         </li>
@@ -66,28 +64,29 @@ import { profile, about, featured, more, experience, publication, skills } from 
   </section>
 
   <!-- Publication -->
-  <section id="publication" class="scroll-mt-20 py-12">
-    <h2 class="mb-6 text-2xl font-semibold text-white">Publication</h2>
-    <div class="rounded-xl border border-line bg-panel p-6 transition duration-200 ease-out hover:scale-[1.01] hover:border-accent/40">
-      <p class="leading-relaxed text-zinc-300">{publication.citation}</p>
+  <section id="publication" class="scroll-mt-20 border-b border-line py-10">
+    <h2 class="mb-6 text-2xl font-semibold text-forest">Publication</h2>
+    <div class="rounded-xl border border-line bg-panel p-6">
+      <p class="leading-relaxed text-muted">{publication.citation}</p>
       <div class="mt-4 flex flex-wrap gap-4 text-sm font-medium">
         <a href={publication.url} target="_blank" rel="noopener" class="text-accent hover:underline">IEEE Xplore ↗</a>
+        <a href={publication.scholarUrl} target="_blank" rel="noopener" class="text-accent hover:underline">Google Scholar ↗</a>
         <a href={publication.relatedUrl} target="_blank" rel="noopener" class="text-accent hover:underline">Related public repo ↗</a>
       </div>
-      <p class="mt-3 text-xs italic text-zinc-500">{publication.note}</p>
+      <p class="mt-3 text-xs italic text-muted">{publication.note}</p>
     </div>
   </section>
 
   <!-- Skills -->
-  <section id="skills" class="scroll-mt-20 py-12">
-    <h2 class="mb-8 text-2xl font-semibold text-white">Skills</h2>
+  <section id="skills" class="scroll-mt-20 border-b border-line py-10">
+    <h2 class="mb-8 text-2xl font-semibold text-forest">Skills</h2>
     <div class="grid gap-x-10 gap-y-6 sm:grid-cols-2 lg:grid-cols-3">
       {skills.map((s) => (
         <div>
-          <h3 class="mb-2 text-sm font-semibold tracking-wide text-zinc-300 uppercase">{s.group}</h3>
+          <h3 class="mb-2 text-sm font-semibold tracking-wide text-muted uppercase">{s.group}</h3>
           <div class="flex flex-wrap gap-1.5">
             {s.items.map((i) => (
-              <span class="rounded border border-line bg-panel px-2 py-1 text-xs text-zinc-400 transition duration-150 hover:scale-110 hover:border-accent/50 hover:text-zinc-200">{i}</span>
+              <span class="rounded border border-line bg-panel px-2 py-1 text-xs text-muted">{i}</span>
             ))}
           </div>
         </div>
@@ -97,13 +96,13 @@ import { profile, about, featured, more, experience, publication, skills } from 
 
   <!-- Contact -->
   <section id="contact" class="py-16 text-center">
-    <h2 class="text-2xl font-semibold text-white">Get in touch</h2>
-    <p class="mx-auto mt-3 max-w-md text-zinc-400">
+    <h2 class="text-2xl font-semibold text-forest">Get in touch</h2>
+    <p class="mx-auto mt-3 max-w-md text-muted">
       Reach out to discuss AI engineering, research, or a project.
     </p>
     <a
       href={`mailto:${profile.email}`}
-      class="mt-6 inline-block rounded-lg bg-accent px-6 py-3 font-medium text-ink transition duration-150 hover:scale-105 hover:opacity-90"
+      class="mt-6 inline-block rounded-lg bg-forest px-6 py-3 font-medium text-panel transition-colors hover:bg-accent"
     >
       {profile.email}
     </a>
