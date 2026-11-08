@@ -1,7 +1,7 @@
 export const profile = {
   name: 'Saumya Rishikesh',
-  tagline: 'AI engineer — voice agents, multi-agent systems, and retrieval pipelines.',
-  sub: 'B.Tech CS, Manipal University Jaipur (2026) · SWE Intern @ DealMatrix · IEEE-published',
+  tagline: 'AI engineer building GPU-backed services, voice agents, and retrieval systems.',
+  sub: 'Associate Software Engineer (AIML) at Cyfuture India · B.Tech CS, Manipal University Jaipur (2026)',
   email: 'saumya1404@gmail.com',
   github: 'https://github.com/Saumya1404',
   linkedin: 'https://linkedin.com/in/saumya-rishikesh-286aa1178',
@@ -10,9 +10,8 @@ export const profile = {
 
 export const about = {
   paragraphs: [
-    'I build AI systems that ship with numbers attached — voice agents measured in milliseconds, retrieval pipelines measured in Recall@K, research measured in peer review.',
-    'Right now I’m a software engineering intern at DealMatrix building multilingual voice agents, finishing my B.Tech in Computer Science at Manipal University Jaipur (Dean’s List, semesters 1–2), and continuing the Alzheimer’s neuroimaging research behind my IEEE paper.',
-    'Current focus: multi-agent orchestration with LangGraph, multimodal AI, and the unglamorous-but-critical work of evaluating LLM systems properly.',
+    'At Cyfuture India, I build GPU-backed video generation services and work on Java and Spring applications. Previously, I built multilingual voice agents at DealMatrix and document extraction pipelines at SP Software.',
+    'My independent projects explore how agents retrieve context, use tools, and handle feedback. I graduated from Manipal University Jaipur in July 2026 and co-authored an IEEE paper on Alzheimer’s classification from MRI scans.',
   ],
   certificate: 'https://drive.google.com/drive/folders/1CImv2fSGDFK8EOht3xbDRDoPGXjOKvzR?usp=sharing',
 };
@@ -29,7 +28,7 @@ export interface Project {
 export const featured: Project[] = [
   {
     title: 'SHL Assessment Recommender',
-    metric: '+58% Recall@10 (0.24 → 0.37)',
+    metric: 'Mean Recall@10 improved from 0.24 to 0.37',
     description:
       'Hybrid retrieval engine for hiring assessments: dense (MiniLM) and sparse BM25 vectors fused with server-side reciprocal-rank fusion in Qdrant, LLM intent parsing with duration/role/seniority filters, and two-stage reranking (Cohere, ZeRank). Measured on a labeled query set.',
     tech: ['Python', 'Qdrant', 'FastAPI', 'Streamlit', 'Reranking'],
@@ -48,13 +47,20 @@ export const featured: Project[] = [
     links: [{ label: 'Code', url: 'https://github.com/Saumya1404/Agentic-Math-Prof' }],
   },
   {
-    title: 'Multilingual Voice Agent',
-    metric: '<1s response · ~60–70% lower cost per call',
+    title: 'Jev Codebase Explorer (CodeScout)',
+    metric: 'Token-budgeted context packs',
     description:
-      'Outbound telecalling agents for 10+ Indian languages built at DealMatrix: streaming Sarvam STT/TTS, Gemini-primary/Groq-fallback LLM chain, and self-hosted SIP telephony — LiveKit SIP bridged to an Asterisk PBX over a Jio trunk. Per-call latency instrumentation into Postgres + Grafana, and a compliance layer with AI disclosure, recording, and transcript logging.',
-    tech: ['LiveKit', 'Sarvam', 'Gemini/Groq', 'Asterisk', 'Docker', 'Grafana'],
+      'Local CLI that indexes Python, JavaScript, and TypeScript repositories with Tree-sitter and SQLite FTS5. It traces callers and callees and packages source spans, related tests, and Git history for coding agents. An offline ranker and optional Jev reranking can be compared by latency and token usage.',
+    tech: ['Python', 'Tree-sitter', 'SQLite FTS5', 'Git', 'Vercel AI Gateway'],
+    links: [{ label: 'Code', url: 'https://github.com/Saumya1404/Codescout' }],
+  },
+  {
+    title: 'LLM Gateway and Traffic Router',
+    metric: 'Cost and latency routing policies',
+    description:
+      'Async OpenAI-compatible gateway with fixed, lowest-cost, and latency-aware routing. It supports SSE streaming, per-model concurrency limits, and provider cooldowns. A mock provider simulates failures for repeatable gateway benchmarks, and Prometheus tracks time to first token.',
+    tech: ['Python', 'SSE', 'Prometheus', 'Load testing'],
     links: [],
-    note: 'Professional work — code private.',
   },
 ];
 
@@ -77,27 +83,35 @@ export const more: Project[] = [
   },
   {
     title: 'Clara AI Config Pipeline',
-    metric: 'Zero-cost automation',
+    metric: 'Demo and onboarding workflows',
     description:
-      'Turns raw sales-call recordings into structured Retell voice-agent configurations: faster-whisper transcription, n8n triggers, Gemini extraction.',
+      'Turns demo call recordings into initial Retell voice-agent configurations, then applies onboarding transcripts to produce a revised configuration and changelog.',
     tech: ['faster-whisper', 'n8n', 'Gemini'],
     links: [{ label: 'Code', url: 'https://github.com/Saumya1404/ClaraAi-Assignment' }],
   },
   {
-    title: 'Manga Recommender',
-    metric: 'Vector search + chat UI',
+    title: 'OpenCode Jev Skill Decision Layer',
+    metric: 'On-demand skill selection',
     description:
-      'Conversational manga recommendations over a ChromaDB vector index with a Streamlit chat interface.',
-    tech: ['ChromaDB', 'Streamlit', 'LLM'],
-    links: [{ label: 'Code', url: 'https://github.com/Saumya1404/Manga-Recommendation-System' }],
+      'MCP server that keeps the skill catalog outside the coding agent’s base prompt and uses Jev to return the instructions for one relevant skill.',
+    tech: ['MCP', 'OpenCode', 'Vercel AI Gateway'],
+    links: [],
   },
   {
-    title: 'Music Genre Classification',
-    metric: 'Audio deep learning',
+    title: 'Predictive Fleet Maintenance',
+    metric: 'Inspection prioritization MVP',
     description:
-      'Deep-learning genre classifier built on Librosa audio features.',
-    tech: ['PyTorch', 'Librosa'],
-    links: [{ label: 'Code', url: 'https://github.com/Saumya1404/Music-Genre-Classification' }],
+      'Scores vehicles for inspection using anomaly detection and fleet data. A Streamlit dashboard shows per-vehicle SHAP explanations and a map view.',
+    tech: ['scikit-learn', 'SHAP', 'Streamlit', 'Folium'],
+    links: [],
+  },
+  {
+    title: 'JSScan MCP',
+    metric: 'JavaScript security scanning',
+    description:
+      'Discovers JavaScript assets and scans for exposed secrets and known vulnerable libraries. Findings include source URLs and supporting evidence, with a host allowlist and audit log for target requests.',
+    tech: ['Python', 'MCP', 'Web security'],
+    links: [{ label: 'Code', url: 'https://github.com/Saumya1404/jsscan-mcp' }],
   },
   {
     title: 'GitHub Webhook Tracker',
@@ -111,13 +125,24 @@ export const more: Project[] = [
 
 export const experience = [
   {
+    role: 'Associate Software Engineer (AIML)',
+    org: 'Cyfuture India',
+    period: 'Jul 2026 – Present',
+    points: [
+      'Deployed a GPU-backed video generation platform on Kubernetes (K3s) with Docker, FastAPI, Redis, and ComfyUI/Wan2.2 on an NVIDIA V100. Separated API, worker, queue, and inference services with persistent job and video storage.',
+      'Configured GPU allocation and health probes. Extending the platform with priority-aware FIFO scheduling, atomic job claims, retries, and abandoned-job recovery.',
+      'Built refund and stock-transfer modules for JCI Sahyog with Java, Spring MVC, Spring Boot, and JSP, including multi-level refund approvals.',
+      'Contributed to CSPDCL’s C#-to-Java migration by building dashboard features and a middleware API for location-based electricity consumption data.',
+    ],
+  },
+  {
     role: 'Software Engineering Intern',
     org: 'DealMatrix Services Pvt Ltd',
-    period: 'Jan 2026 – Present',
+    period: 'Jan 2026 – Jul 2026',
     points: [
-      'Multilingual AI voice agents for 10+ Indian languages with 24/7 availability, cutting per-call operational cost by ~60–70% vs human callers (self-hosted deployment).',
-      'Low-latency streaming pipeline — Sarvam STT/TTS, Gemini-primary/Groq-fallback LLMs, LiveKit over WebRTC — instrumented at <1s end-to-end response.',
-      'Self-hosted SIP telephony (LiveKit SIP → Asterisk PBX → Jio trunk), RBI-compliance monitoring with call recording and transcript logging, automated WhatsApp follow-ups, and a modular agent architecture with interruption handling and silence watchdogs.',
+      'Built voice agents supporting 10+ Indian languages with 24/7 availability and 30–40% lower per-call operating costs compared with human callers.',
+      'Achieved sub-second responses using Sarvam STT/TTS, Gemini with Groq fallback, and LiveKit over WebRTC. Tracked time to first token and per-call latency with PostgreSQL and Grafana.',
+      'Connected LiveKit SIP through Asterisk to a Jio trunk. Added call recording, transcript logging, WhatsApp follow-ups, interruption handling, and silence watchdogs.',
     ],
   },
   {
@@ -149,10 +174,10 @@ export const publication = {
 };
 
 export const skills = [
-  { group: 'Languages', items: ['Python', 'C/C++', 'SQL', 'JavaScript'] },
-  { group: 'AI / ML', items: ['PyTorch', 'Transformers', 'scikit-learn', 'OpenCV', 'Librosa'] },
-  { group: 'Agents & Retrieval', items: ['LangGraph', 'LangChain', 'DSPy', 'MCP', 'Qdrant', 'ChromaDB'] },
-  { group: 'Voice', items: ['LiveKit', 'WebRTC', 'Sarvam', 'STT/TTS pipelines'] },
-  { group: 'Backend & Infra', items: ['FastAPI', 'Docker', 'Postgres', 'SQLite', 'MongoDB', 'Grafana', 'Git'] },
-  { group: 'Frontend', items: ['React', 'Streamlit'] },
+  { group: 'Languages', items: ['Python', 'Java', 'SQL', 'JavaScript'] },
+  { group: 'AI / ML', items: ['PyTorch', 'Hugging Face Transformers', 'OCR', 'LangGraph', 'DSPy', 'MCP'] },
+  { group: 'Data & Retrieval', items: ['RAG', 'Qdrant', 'BM25', 'Embeddings', 'Reranking', 'SQLite FTS5', 'PostgreSQL', 'MongoDB'] },
+  { group: 'Voice', items: ['LiveKit', 'WebRTC', 'SIP', 'Sarvam STT/TTS'] },
+  { group: 'Backend & Frontend', items: ['FastAPI', 'Spring Boot', 'React', 'Streamlit'] },
+  { group: 'Infrastructure', items: ['Kubernetes (K3s)', 'Docker', 'Redis', 'Grafana', 'Git'] },
 ];
